@@ -1,7 +1,7 @@
 # Проект «Большое путешествие (простой)»
 
 * Студент: [Ilya Nikolenko](https://up.htmlacademy.ru/ecmascript/19/user/1406023).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Конотоп](https://htmlacademy.ru/profile/id2123489)
 
 ---
 
