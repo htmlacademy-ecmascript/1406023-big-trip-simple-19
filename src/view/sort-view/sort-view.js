@@ -1,8 +1,19 @@
-import { createElement } from '../render';
+import View from '../view';
+import {html} from '../../utils';
+import './sort-view.css';
 
-function createAppSort() {
-  return (
-    `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
+export default class SortView extends View {
+  constructor() {
+    super();
+
+    this.classList.add('trip-sort');
+  }
+
+  /**
+   * @override
+   */
+  createHtml() {
+    return html`
       <div class="trip-sort__item  trip-sort__item--day">
         <input id="sort-day" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-day">
         <label class="trip-sort__btn" for="sort-day">Day</label>
@@ -27,24 +38,8 @@ function createAppSort() {
         <input id="sort-offer" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-offer" disabled>
         <label class="trip-sort__btn" for="sort-offer">Offers</label>
       </div>
-    </form>`
-  );
-}
-
-export default class AppSort {
-  getTemplate() {
-    return createAppSort();
-  }
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-    return this.element;
-  }
-
-  removeElement() {
-    this.element = null;
+    `;
   }
 }
+
+customElements.define(String(SortView), SortView);
