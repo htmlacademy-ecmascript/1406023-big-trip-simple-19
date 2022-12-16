@@ -2,9 +2,9 @@ import Adapter from './adapter';
 
 export default class PointAdapter extends Adapter {
   /**
-   * @param {Partial<Point>} data
+   * @param {Point} data
    */
-  constructor(data = {}) {
+  constructor(data) {
     super();
 
     this.basePrice = data.base_price;
