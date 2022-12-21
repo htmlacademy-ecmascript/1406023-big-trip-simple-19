@@ -10,12 +10,12 @@ import PointAdapter from './adapters/point-adapter';
 import DestanationAdapter from './adapters/destination-adapter';
 import offerGroupAdapter from './adapters/offer-group-adapter';
 
-import {FilterType, SortType} from './enums';
-import {filterCallbackMap, sortCallbackMap} from './maps';
+import { FilterType, SortType } from './enums';
+import { filterCallbackMap, sortCallbackMap } from './maps';
 
 
 const BASE = 'https://19.ecmascript.pages.academy/big-trip-simple';
-const AUTH = 'Basic frd23sjd1ade';
+const AUTH = 'Basic frd23sssd1fqw2de';
 
 /**
  * @type {Store<Point>}
@@ -25,8 +25,9 @@ const pointsModel = new CollectionModel({
   store: pointsStore,
   adapt: (item) => new PointAdapter(item),
   filter: filterCallbackMap[FilterType.FUTURE],
-  sort: sortCallbackMap[SortType.DAY]
+  sort: sortCallbackMap[SortType.DAY],
 });
+
 /**
  * @type {Store<Destination>}
  */
@@ -53,6 +54,8 @@ Promise.all(
 )
   .then(() => {
     table(pointsModel.list());
+
+
     // log('Points', pointsModel.listAll());
     // log('Points: item', pointsModel.item(0));
     // log('Points: findBy', pointsModel.findBy('basePrice', 300));
@@ -64,3 +67,22 @@ Promise.all(
   .catch((error) => {
     log(error);
   });
+
+async function test() {
+  const date = new Date().toJSON();
+  const item = await pointsStore.add({
+    'base_price': 9999,
+    'date_from': date,
+    'date_to': date,
+    'destination': 1,
+    'offers': [],
+    'type': 'bus'
+  });
+  item['base_price'] = 200000;
+  await pointsStore.update(item);
+  await pointsStore.delete(item.id);
+
+  table(pointsModel.listAll());
+}
+
+test();
