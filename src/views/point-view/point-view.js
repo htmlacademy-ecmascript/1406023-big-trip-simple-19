@@ -10,6 +10,7 @@ export default class PointView extends View {
     super(state);
 
     this.classList.add('trip-events__item');
+    this.setOffers(state.offers);
   }
 
   /**
@@ -28,25 +29,41 @@ export default class PointView extends View {
           <p class="event__time">
           <time class="event__start-time" datetime="${state.startDate}">${state.startTime}</time>
             —
-          <time class="event__end-time" datetime="${state.startDate}">${state.endTime}</time>
+          <time class="event__end-time" datetime="${state.endTime}">${state.endTime}</time>
           </p>
         </div>
         <p class="event__price">
           €&nbsp;<span class="event__price-value">${state.basePrice}</span>
         </p>
         <h4 class="visually-hidden">Offers:</h4>
-        <ul class="event__selected-offers">
-          <li class="event__offer">
-            <span class="event__offer-title">Rent a car</span>
-            +€&nbsp;
-            <span class="event__offer-price">200</span>
-          </li>
-        </ul>
+        <ul class="event__selected-offers"></ul>
         <button class="event__rollup-btn" type="button">
           <span class="visually-hidden">Open event</span>
         </button>
       </div>
     `;
+  }
+
+  /**
+* @param {OfferViewState} state
+*/
+  createOfferHtml(state) {
+    return html`
+      <li class="event__offer">
+        <span class="event__offer-title">${state.title}</span>
+        +€&nbsp;
+        <span class="event__offer-price">${state.price}</span>
+      </li>
+    `;
+  }
+
+  /**
+ * @param {OfferViewState[]} states
+ */
+  setOffers(states) {
+    const offersHtml = states.map(this.createOfferHtml).join('');
+
+    this.querySelector('.event__selected-offers').innerHTML = offersHtml;
   }
 }
 

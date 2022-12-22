@@ -1,8 +1,8 @@
-import './view/filter-view/filter-view';
-import './view/sort-view/sort-view';
-import './view/list-view/list-view';
-import './view/point-view/point-view';
-import './view/new-point-editor-view/new-point-editor-view';
+import './views/filter-view/filter-view';
+import './views/sort-view/sort-view';
+import ListView from './views/list-view/list-view';
+import './views/point-view/point-view';
+import './views/new-point-editor-view/new-point-editor-view';
 import Store from './store';
 
 import CollectionModel from './models/collection-model';
@@ -12,10 +12,11 @@ import offerGroupAdapter from './adapters/offer-group-adapter';
 
 import { FilterType, SortType } from './enums';
 import { filterCallbackMap, sortCallbackMap } from './maps';
+import ListPresenter from './presenters/list-presenter';
 
 
 const BASE = 'https://19.ecmascript.pages.academy/big-trip-simple';
-const AUTH = 'Basic frd23sssd1fqw2de';
+const AUTH = 'Basic frd23sssfqw2de';
 
 /**
  * @type {Store<Point>}
@@ -25,7 +26,7 @@ const pointsModel = new CollectionModel({
   store: pointsStore,
   adapt: (item) => new PointAdapter(item),
   filter: filterCallbackMap[FilterType.FUTURE],
-  sort: sortCallbackMap[SortType.DAY],
+  sort: sortCallbackMap[SortType.EVENT],
 });
 
 /**
@@ -46,36 +47,18 @@ const offerGroupsModel = new CollectionModel({
 });
 
 const models = [pointsModel, destinationsModel, offerGroupsModel];
+const listView = document.querySelector(String(ListView));
 
-const { log, table } = console;
+const { log } = console;
 
 Promise.all(
   models.map((model) => model.ready())
 )
-  .then(() => {
-    table(pointsModel.list());
+  .then(async () => {
+    new ListPresenter(listView, models);
   })
 
   .catch((error) => {
     log(error);
   });
-
-async function test() {
-  const date = new Date().toJSON();
-  const item = await pointsStore.add({
-    'base_price': 9999,
-    'date_from': date,
-    'date_to': date,
-    'destination': 1,
-    'offers': [],
-    'type': 'bus'
-  });
-  item['base_price'] = 200000;
-  await pointsStore.update(item);
-  await pointsStore.delete(item.id);
-
-  table(pointsModel.listAll());
-}
-
-test();
 

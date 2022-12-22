@@ -90,3 +90,13 @@
  * @prop {string} price
  */
 
+/**
+ * @template Item
+ * @template {Adapter} ItemAdapter
+ * @typedef {import('./models/collection-model').default<Item,ItemAdapter>} CollectionModel
+ */
+
+/**
+ * @typedef {import('./views/list-view/list-view').default} ListView
+ */
+

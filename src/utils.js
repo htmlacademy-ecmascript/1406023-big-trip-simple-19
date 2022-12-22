@@ -18,7 +18,6 @@ export const html = (strings, ...values) => strings.reduce((before, after, index
  */
 export const formatDate = (value) => dayjs(value).format('MMM DD');
 
-
 /**
  *
  * @param {string} value
