@@ -7,6 +7,7 @@ export default class offerGroupAdapter extends Adapter {
   constructor(data) {
     super();
 
+    this.id = data.type;
     this.type = data.type;
     this.items = data.offers.map((item) => ({
       ...item,

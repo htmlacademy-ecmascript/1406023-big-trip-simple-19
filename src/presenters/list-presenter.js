@@ -26,7 +26,7 @@ export default class ListPresenter extends Presenter {
  */
   createPointViewState(point) {
     const destination = this.destinationsModel.findById(point.destinationId);
-    const offerGroup = this.offerGroupsModel.findBy('type', point.type);
+    const offerGroup = this.offerGroupsModel.findById(point.type);
     const offerViewState = offerGroup
       .items
       .filter((item) => point.offerIds.includes(item.id))
