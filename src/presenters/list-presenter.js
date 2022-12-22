@@ -45,7 +45,7 @@ export default class ListPresenter extends Presenter {
       startTime: formatTime(point.startDate),
       startDate: formatDate(point.endDate),
       endTime: formatTime(point.endDate),
-      endDate: formatDate(point.endDate),
+      endDate: formatTime(point.endDate),
       basePrice: formatNumber(point.basePrice),
       offers: offerViewState
     };
