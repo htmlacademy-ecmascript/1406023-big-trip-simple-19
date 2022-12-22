@@ -32,8 +32,7 @@ export default class ListPresenter extends Presenter {
       .filter((item) => point.offerIds.includes(item.id))
       .map((item) => (
         {
-          id: item.id,
-          title: item.title,
+          ...item,
           price: formatNumber(item.price)
         }
       ));
