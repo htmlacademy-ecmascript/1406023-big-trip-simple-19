@@ -71,3 +71,22 @@
  * @return {number}
  */
 
+/**
+ * @typedef PointViewState
+ * @prop {string} date
+ * @prop {string} icon
+ * @prop {string} title
+ * @prop {string} startTime
+ * @prop {string} startDate
+ * @prop {string} endTime
+ * @prop {string} endDate
+ * @prop {string} basePrice
+ * @prop {OfferViewState[]} offers
+ */
+
+/**
+ * @typedef OfferViewState
+ * @prop {string} title
+ * @prop {string} price
+ */
+

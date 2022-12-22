@@ -54,14 +54,6 @@ Promise.all(
 )
   .then(() => {
     table(pointsModel.list());
-
-
-    // log('Points', pointsModel.listAll());
-    // log('Points: item', pointsModel.item(0));
-    // log('Points: findBy', pointsModel.findBy('basePrice', 300));
-    // log('Points: findById', pointsModel.findById('0'));
-    // log('Destinations', destinationsModel.listAll());
-    // log('Offer groups', offerGroupsModel.listAll());
   })
 
   .catch((error) => {
@@ -86,3 +78,4 @@ async function test() {
 }
 
 test();
+

@@ -1,4 +1,4 @@
-import {FilterType, SortType} from './enums';
+import {FilterType, SortType, PointType} from './enums';
 
 /**
  * @type {Record<string,FilterCallback<PointAdapter>>}
@@ -17,4 +17,16 @@ export const sortCallbackMap = {
   [SortType.TIME]: () => 0,
   [SortType.PRICE]: (item, nextItem) => nextItem.basePrice - item.basePrice,
   [SortType.OFFERS]: () => 0
+};
+
+export const pointTitleMap = {
+  [PointType.TAXI]: 'Taxi',
+  [PointType.BUS]: 'Bus',
+  [PointType.TRAIN]: 'Train',
+  [PointType.SHIP]: 'Ship',
+  [PointType.DRIVE]: 'Drive',
+  [PointType.FLIGHT]: 'Flight',
+  [PointType.CHECK_IN]: 'Check-in',
+  [PointType.SIGHTSEEING]: 'Sightseeing',
+  [PointType.RESTAURANT]: 'Restaurant'
 };
