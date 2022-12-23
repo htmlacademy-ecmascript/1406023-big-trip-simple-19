@@ -27,13 +27,13 @@ export default class ListPresenter extends Presenter {
   createPointViewState(point) {
     const destination = this.destinationsModel.findById(point.destinationId);
     const offerGroup = this.offerGroupsModel.findById(point.type);
-    const offerViewState = offerGroup
-      .items
-      .filter((item) => point.offerIds.includes(item.id))
-      .map((item) => (
+
+    const offerViewState = offerGroup.items
+      .filter((offer) => point.offerIds.includes(offer.id))
+      .map((offer) => (
         {
-          ...item,
-          price: formatNumber(item.price)
+          title: offer.title,
+          price: formatNumber(offer.price)
         }
       ));
 
