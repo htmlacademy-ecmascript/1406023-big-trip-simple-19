@@ -11,6 +11,9 @@ export default class ListPresenter extends Presenter {
     super(...arguments);
 
     this.updateView();
+    this.pointsModel.addEventListener('filter', this.handlePointsModelFilter.bind(this));
+    this.pointsModel.addEventListener('sort', this.handlePointsModelSort.bind(this));
+
   }
 
   updateView() {
@@ -48,5 +51,13 @@ export default class ListPresenter extends Presenter {
       basePrice: formatNumber(point.basePrice),
       offers: offerViewState
     };
+  }
+
+  handlePointsModelFilter() {
+    this.updateView();
+  }
+
+  handlePointsModelSort() {
+    this.updateView();
   }
 }

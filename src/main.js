@@ -1,5 +1,5 @@
-import './views/filter-view/filter-view';
-import './views/sort-view/sort-view';
+import FilterView from './views/filter-view/filter-view';
+import SortView from './views/sort-view/sort-view';
 import ListView from './views/list-view/list-view';
 import './views/point-view/point-view';
 import './views/new-point-editor-view/new-point-editor-view';
@@ -13,6 +13,8 @@ import offerGroupAdapter from './adapters/offer-group-adapter';
 import { FilterType, SortType } from './enums';
 import { filterCallbackMap, sortCallbackMap } from './maps';
 import ListPresenter from './presenters/list-presenter';
+import FilterPresenter from './presenters/filter-presenter';
+import SortPresenter from './presenters/sort-presenter';
 
 
 const BASE = 'https://19.ecmascript.pages.academy/big-trip-simple';
@@ -47,7 +49,9 @@ const offerGroupsModel = new CollectionModel({
 });
 
 const models = [pointsModel, destinationsModel, offerGroupsModel];
+const filterView = document.querySelector(String(FilterView));
 const listView = document.querySelector(String(ListView));
+const sortView = document.querySelector(String(SortView));
 
 const { log } = console;
 
@@ -55,7 +59,9 @@ Promise.all(
   models.map((model) => model.ready())
 )
   .then(async () => {
+    new FilterPresenter(filterView, models);
     new ListPresenter(listView, models);
+    new SortPresenter(sortView, models);
   })
 
   .catch((error) => {

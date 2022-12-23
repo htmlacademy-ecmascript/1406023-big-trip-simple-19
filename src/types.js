@@ -91,12 +91,20 @@
  */
 
 /**
+ * @typedef OptionViewState
+ * @prop {string} title
+ * @prop {string} value
+ */
+
+/**
  * @template Item
  * @template {Adapter} ItemAdapter
  * @typedef {import('./models/collection-model').default<Item,ItemAdapter>} CollectionModel
  */
 
 /**
+ * @typedef {import('./views/filter-view/filter-view').default} FilterView
+ * @typedef {import('./views/sort-view/sort-view').default} SortView
  * @typedef {import('./views/list-view/list-view').default} ListView
  */
 
