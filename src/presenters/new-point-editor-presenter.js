@@ -11,7 +11,7 @@ export default class NewPointEditorPresenter extends Presenter {
 
     const pointTypeOptions =
       Object.entries(pointTitleMap)
-        .map(([value, title]) => ({title, value}));
+        .map(([value, title]) => ({ title, value }));
 
     const destinationOption =
       this.destinationsModel
@@ -57,20 +57,21 @@ export default class NewPointEditorPresenter extends Presenter {
     if (offerIds.length === 0) {
       this.view.offersView.hidden = true;
     }
+
     else {
       this.view.offersView.hidden = false;
+
+
+      const offers = this.offerGroupsModel.findBy('type', pointType).items
+        .map((item) => ({
+          id: item.id,
+          price: String(item.price),
+          title: item.title,
+          checked: false
+        }));
+
+      this.view.offersView.setOptions(offers);
     }
-
-
-    const offers = this.offerGroupsModel.findBy('type', pointType).items
-      .map((item) => ({
-        id: item.id,
-        price: String(item.price),
-        title: item.title,
-        checked: false
-      }));
-
-    this.view.offersView.setOptions(offers);
   }
 
   /**
