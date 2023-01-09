@@ -61,7 +61,6 @@ export default class NewPointEditorPresenter extends Presenter {
     else {
       this.view.offersView.hidden = false;
 
-
       const offers = this.offerGroupsModel.findBy('type', pointType).items
         .map((item) => ({
           id: item.id,
