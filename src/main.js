@@ -20,7 +20,7 @@ import NewPointEditorPresenter from './presenters/new-point-editor-presenter';
 
 
 const BASE = 'https://19.ecmascript.pages.academy/big-trip-simple';
-const AUTH = 'Basic frd23sssfqw2de';
+const AUTH = 'Basic frd23sfqw2de';
 
 /**
  * @type {Store<Point>}
