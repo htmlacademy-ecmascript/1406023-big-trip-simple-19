@@ -1,4 +1,6 @@
+import { pointTitleMap } from '../maps';
 import Presenter from './presenter';
+import { PointType } from '../enums';
 
 /**
  * @extends {Presenter<NewPointEditorView>}
@@ -6,6 +8,12 @@ import Presenter from './presenter';
 export default class NewPointEditorPresenter extends Presenter {
   constructor() {
     super(...arguments);
+
+    const pointTypeOptions =
+      Object.entries(pointTitleMap).map(([value, title]) => ({title, value}));
+
+    this.view.pointTypeView.setOptions(pointTypeOptions);
+    this.view.pointTypeView.setValue(PointType.FLIGHT);
 
     this.view.addEventListener('submit', this.handleViewSubmit.bind(this));
     this.view.addEventListener('reset', this.handleViewReset.bind(this));
@@ -20,7 +28,7 @@ export default class NewPointEditorPresenter extends Presenter {
       this.view.open();
     }
     else {
-      this.view.close();
+      this.view.close(false);
     }
   }
 
@@ -36,8 +44,6 @@ export default class NewPointEditorPresenter extends Presenter {
   }
 
   handleViewClose() {
-    if (this.location.pathname === '/new') {
-      this.navigate('/');
-    }
+    this.navigate('/');
   }
 }
