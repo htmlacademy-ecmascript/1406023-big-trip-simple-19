@@ -1,6 +1,7 @@
 import { pointTitleMap } from '../maps';
 import Presenter from './presenter';
 import { PointType } from '../enums';
+import { formatNumber } from '../utils';
 
 /**
  * @extends {Presenter<NewPointEditorView>}
@@ -64,7 +65,7 @@ export default class NewPointEditorPresenter extends Presenter {
       const offers = this.offerGroupsModel.findBy('type', pointType).items
         .map((item) => ({
           id: item.id,
-          price: String(item.price),
+          price: formatNumber(item.price),
           title: item.title,
           checked: false
         }));
