@@ -54,6 +54,15 @@ export default class OffersView extends View {
 
     this.querySelector('.event__available-offers').innerHTML = optionHtml;
   }
+
+  getValues() {
+    /**
+     * @type {NodeListOf<HTMLInputElement>}
+     */
+    const views = this.querySelectorAll(':checked');
+
+    return [...views].map((view) => view.value);
+  }
 }
 
 customElements.define(String(OffersView), OffersView);

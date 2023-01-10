@@ -26,6 +26,7 @@ export default class NewPointEditorPresenter extends Presenter {
     this.view.pointTypeView.addEventListener('change', this.handlePointTypeViewChange.bind(this));
 
     this.view.destinationView.setOptions(destinationOption);
+    this.view.destinationView.addEventListener('input', this.handleDestinationViewInput.bind(this));
 
     this.view.addEventListener('submit', this.handleViewSubmit.bind(this));
     this.view.addEventListener('reset', this.handleViewReset.bind(this));
@@ -44,6 +45,7 @@ export default class NewPointEditorPresenter extends Presenter {
     this.view.destinationView.setValue(destination.name);
 
     this.updateOffersView(point.offerIds);
+    this.updateDestinationDetailsView(destination);
   }
 
   /**
@@ -51,26 +53,26 @@ export default class NewPointEditorPresenter extends Presenter {
    */
   updateOffersView(offerIds = []) {
     const pointType = this.view.pointTypeView.getValue();
+    const offerGroup = this.offerGroupsModel.findById(pointType);
 
-    offerIds = this.offerGroupsModel.findBy('type', pointType).items
-      .map((item) => (`${item.id}`));
+    const options = offerGroup.items.map((offer) => ({
+      ...offer,
+      price: formatNumber(offer.price),
+      checked: offerIds.includes(offer.id)
+    }));
 
-    if (offerIds.length === 0) {
-      this.view.offersView.hidden = true;
-    }
+    this.view.offersView.hidden = !options.length;
+    this.view.offersView.setOptions(options);
+  }
 
-    else {
-      this.view.offersView.hidden = false;
+  /**
+   * @param {DestinationAdapter} [destination]
+   */
+  updateDestinationDetailsView(destination) {
+    this.view.destinationDetailsView.hidden = !destination;
 
-      const offers = this.offerGroupsModel.findBy('type', pointType).items
-        .map((item) => ({
-          id: item.id,
-          price: formatNumber(item.price),
-          title: item.title,
-          checked: false
-        }));
-
-      this.view.offersView.setOptions(offers);
+    if (destination) {
+      this.view.destinationDetailsView.setContent(destination);
     }
   }
 
@@ -79,13 +81,14 @@ export default class NewPointEditorPresenter extends Presenter {
    */
   handleNavigation() {
     if (this.location.pathname === '/new') {
-      const point = this.pointsModel.item(0);
+      const point = this.pointsModel.item(5);
 
       point.type = PointType.TRAIN;
-      point.destinationId = this.destinationsModel.item(0).id;
+      point.destinationId = this.destinationsModel.item(5).id;
       point.startDate = new Date().toJSON();
       point.endDate = point.startDate;
       point.basePrice = 175;
+      point.offerIds = ['1', '2'];
 
       this.view.open();
       this.updateView(point);
@@ -116,5 +119,12 @@ export default class NewPointEditorPresenter extends Presenter {
     this.view.destinationView.setLabel(pointTitleMap[pointType]);
 
     this.updateOffersView();
+  }
+
+  handleDestinationViewInput() {
+    const destinationName = this.view.destinationView.getValue();
+    const destination = this.destinationsModel.findBy('name', destinationName);
+
+    this.updateDestinationDetailsView(destination);
   }
 }

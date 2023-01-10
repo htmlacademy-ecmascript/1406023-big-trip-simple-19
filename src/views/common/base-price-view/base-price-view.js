@@ -1,5 +1,5 @@
 import View from '../../view';
-import { html } from '../../../utils';
+import { formatNumber, html } from '../../../utils';
 
 export default class BasePriceView extends View {
   constructor() {
@@ -17,8 +17,25 @@ export default class BasePriceView extends View {
         <span class="visually-hidden">Price</span>
         €
       </label>
-      <input class="event__input  event__input--price" id="event-price-1" type="text" name="event-price" value="">
+      <input
+        class="event__input  event__input--price"
+        id="event-price-1"
+        type="text"
+        name="event-price"
+        value=""
+      >
     `;
+  }
+
+  /**
+   * @param {PointAdapter} state
+   */
+  setValue(state) {
+    this.querySelector('input').value = formatNumber(state.basePrice);
+  }
+
+  getValue() {
+    return parseInt(this.querySelector('input').value, 10);
   }
 }
 
