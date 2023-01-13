@@ -60,19 +60,20 @@ export default class DatesView extends View {
     const defaultConfig = {
       allowInput: true,
       enableTime: true,
-      monthSelectorType: 'static'
+      monthSelectorType: 'static',
+      // disableMobile: true
     };
 
     //@ts-ignore
     this.#startDateConfig = {
+      onChange: ([value]) => {
+        this.#endDateCalendar.set('minDate', value);
+      },
       ...defaultConfig,
       ...config
     };
     //@ts-ignore
     this.#endDateConfig = {
-      onChange: ([value]) => {
-        this.#endDateCalendar.set('minDate', value);
-      },
       ...defaultConfig,
       ...config
     };
@@ -96,7 +97,7 @@ export default class DatesView extends View {
   setValues(dates) {
     const [startDate, endDate] = dates;
 
-    this.#startDateCalendar.setDate(startDate, true);
+    this.#startDateCalendar.setDate(startDate);
     this.#endDateCalendar.setDate(endDate);
   }
 
