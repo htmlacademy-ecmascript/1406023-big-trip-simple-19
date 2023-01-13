@@ -85,6 +85,19 @@ export default class DatesView extends View {
 
     this.#startDateCalendar = createCalendar(startDateView, this.#startDateConfig);
     this.#endDateCalendar = createCalendar(endDateView, this.#endDateConfig);
+
+    this.#startDateCalendar.calendarContainer
+      .addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          event.stopPropagation();
+        }
+      });
+    this.#endDateCalendar.calendarContainer
+      .addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          event.stopPropagation();
+        }
+      });
   }
 
   destroyCalebdars() {
@@ -113,6 +126,7 @@ export default class DatesView extends View {
     if (event.key === 'Escape') {
       event.stopPropagation();
       event.target.blur();
+
       this.#startDateCalendar.close();
       this.#endDateCalendar.close();
     }
