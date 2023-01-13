@@ -97,7 +97,7 @@ export default class DatesView extends View {
   setValues(dates) {
     const [startDate, endDate] = dates;
 
-    this.#startDateCalendar.setDate(startDate);
+    this.#startDateCalendar.setDate(startDate, true);
     this.#endDateCalendar.setDate(endDate);
   }
 
