@@ -117,3 +117,8 @@
  * @typedef {import('./views/new-point-editor-view/new-point-editor-view').default} NewPointEditorView
  */
 
+/**
+ * @typedef {import('flatpickr/dist/types/instance').Instance} Calendar
+ * @typedef {import('flatpickr/dist/types/options').Options} CalendarConfig
+ */
+

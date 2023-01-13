@@ -1,7 +1,29 @@
 import View from '../../view';
 import { html } from '../../../utils';
+import createCalendar from 'flatpickr';
+import 'flatpickr/dist/flatpickr.css';
 
 export default class DateView extends View {
+  /**
+ * @type {Calendar}
+ */
+  #startDateCalendar;
+
+  /**
+   * @type {CalendarConfig}
+   */
+  #startDateConfig;
+
+  /**
+   * @type {Calendar}
+   */
+  #endDateCalendar;
+
+  /**
+   * @type {CalendarConfig}
+   */
+  #endDateConfig;
+
   constructor() {
     super();
 
@@ -14,11 +36,33 @@ export default class DateView extends View {
   createHtml() {
     return html`
 			<label class="visually-hidden" for="event-start-time-1">From</label>
-			<input class="event__input  event__input--time" id="event-start-time-1" type="text" name="event-start-time" value="19/03/19 00:00">
+			<input
+        class="event__input  event__input--time"
+        id="event-start-time-1"
+        type="text"
+        name="event-start-time"
+      >
       —
       <label class="visually-hidden" for="event-end-time-1">To</label>
-      <input class="event__input  event__input--time" id="event-end-time-1" type="text" name="event-end-time" value="19/03/19 00:00">
+      <input
+        class="event__input  event__input--time"
+        id="event-end-time-1"
+        type="text"
+        name="event-end-time"
+      >
     `;
+  }
+
+  createCalendars() {
+    const [startDateView, endDateView] = this.querySelectorAll('input');
+
+    this.#startDateCalendar = createCalendar(startDateView, this.#startDateConfig);
+    this.#endDateCalendar = createCalendar(endDateView, this.#endDateConfig);
+  }
+
+  destroyCalebdars() {
+    this.#startDateCalendar?.destroy();
+    this.#endDateCalendar?.destroy();
   }
 }
 
