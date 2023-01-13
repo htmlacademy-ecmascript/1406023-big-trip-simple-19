@@ -28,10 +28,10 @@ export default class BasePriceView extends View {
   }
 
   /**
-   * @param {PointAdapter} state
+   * @param {number} state
    */
   setValue(state) {
-    this.querySelector('input').value = formatNumber(state.basePrice);
+    this.querySelector('input').value = formatNumber(state);
   }
 
   getValue() {
