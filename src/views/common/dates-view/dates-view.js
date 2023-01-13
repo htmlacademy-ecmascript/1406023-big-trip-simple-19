@@ -3,7 +3,7 @@ import { html } from '../../../utils';
 import createCalendar from 'flatpickr';
 import 'flatpickr/dist/flatpickr.css';
 
-export default class DateView extends View {
+export default class DatesView extends View {
   /**
  * @type {Calendar}
  */
@@ -53,6 +53,31 @@ export default class DateView extends View {
     `;
   }
 
+  /**
+   * @param {CalendarConfig} config
+   */
+  setConfig(config) {
+    const defaultConfig = {
+      allowInput: true,
+      enableTime: true,
+      monthSelectorType: 'static'
+    };
+
+    //@ts-ignore
+    this.#startDateConfig = {
+      ...defaultConfig,
+      ...config
+    };
+    //@ts-ignore
+    this.#endDateConfig = {
+      onChange: ([value]) => {
+        this.#endDateCalendar.set('minDate', value);
+      },
+      ...defaultConfig,
+      ...config
+    };
+  }
+
   createCalendars() {
     const [startDateView, endDateView] = this.querySelectorAll('input');
 
@@ -64,6 +89,23 @@ export default class DateView extends View {
     this.#startDateCalendar?.destroy();
     this.#endDateCalendar?.destroy();
   }
+
+  /**
+   * @param {string[]} dates
+   */
+  setValues(dates) {
+    const [startDate, endDate] = dates;
+
+    this.#startDateCalendar.setDate(startDate, true);
+    this.#endDateCalendar.setDate(endDate);
+  }
+
+  getValues() {
+    return [
+      this.#startDateCalendar.selectedDates[0]?.toJSON(),
+      this.#endDateCalendar.selectedDates[0]?.toJSON()
+    ];
+  }
 }
 
-customElements.define(String(DateView), DateView);
+customElements.define(String(DatesView), DatesView);
