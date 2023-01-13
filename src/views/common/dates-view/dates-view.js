@@ -28,6 +28,7 @@ export default class DatesView extends View {
     super();
 
     this.classList.add('event__field-group', 'event__field-group--time');
+    this.addEventListener('keydown', this.handleKeydown.bind(this));
   }
 
   /**
@@ -106,6 +107,15 @@ export default class DatesView extends View {
       this.#startDateCalendar.selectedDates[0]?.toJSON(),
       this.#endDateCalendar.selectedDates[0]?.toJSON()
     ];
+  }
+
+  handleKeydown(event) {
+    if (event.key === 'Escape') {
+      event.stopPropagation();
+      event.target.blur();
+      this.#startDateCalendar.close();
+      this.#endDateCalendar.close();
+    }
   }
 }
 

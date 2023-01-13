@@ -29,9 +29,11 @@ export default class NewPointEditorPresenter extends Presenter {
     this.view.destinationView.addEventListener('input', this.handleDestinationViewInput.bind(this));
 
     this.view.datesView.setConfig({
-      // Формат даты по ТЗ
-      // Неделя начинается в понедельник
-      // 24 часа вместо AM/PM
+      dateFormat: 'Y/m/d H:i',
+      'time_24hr': true,
+      locale: {
+        firstDayOfWeek: 1
+      }
     });
 
     this.view.addEventListener('submit', this.handleViewSubmit.bind(this));
