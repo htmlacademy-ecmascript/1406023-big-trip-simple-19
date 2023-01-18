@@ -28,7 +28,7 @@ export default class DatesView extends View {
     super();
 
     this.classList.add('event__field-group', 'event__field-group--time');
-    this.addEventListener('keydown', this.handleKeydown.bind(this));
+    this.addEventListener('keydown', this.handleKeydown.bind(this), true);
   }
 
   /**
@@ -59,9 +59,9 @@ export default class DatesView extends View {
    */
   setConfig(config) {
     const defaultConfig = {
-      allowInput: true,
       enableTime: true,
       monthSelectorType: 'static',
+      static: true
       // disableMobile: true
     };
 
@@ -122,10 +122,12 @@ export default class DatesView extends View {
     ];
   }
 
+  /**
+   * @param {KeyboardEvent} event
+   */
   handleKeydown(event) {
-    if (event.key === 'Escape') {
-      event.stopPropagation();
-      event.target.blur();
+    if (event.key === 'Escape' && (this.#endDateCalendar.isOpen || this.#startDateCalendar.isOpen)) {
+      event.stopImmediatePropagation();
 
       this.#startDateCalendar.close();
       this.#endDateCalendar.close();

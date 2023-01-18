@@ -1,4 +1,4 @@
-import {FilterType, SortType, PointType} from './enums';
+import {FilterType, SortType, PointType, buttomState} from './enums';
 
 export const filterTitleMap = {
   [FilterType.EVERYTHING]: 'Everything',
@@ -50,4 +50,9 @@ export const pointTitleMap = {
   [PointType.CHECK_IN]: 'Check-in',
   [PointType.SIGHTSEEING]: 'Sightseeing',
   [PointType.RESTAURANT]: 'Restaurant'
+};
+
+export const saveButtonTextMap = {
+  [buttomState.DEFAULT]: 'Save',
+  [buttomState.PRESSED]: 'Saving...'
 };

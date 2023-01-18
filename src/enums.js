@@ -23,6 +23,11 @@ export const PointType = {
   RESTAURANT: 'restaurant'
 };
 
+export const buttomState = {
+  DEFAULT: 0,
+  PRESSED: 1
+};
+
 export const PointIconMap = Object.fromEntries(
   Object.values(PointType).map((value) => [value, `img/icons/${value}.png`])
 );

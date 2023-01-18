@@ -111,8 +111,31 @@ export default class NewPointEditorPresenter extends Presenter {
   /**
    * @param {SubmitEvent} event
    */
-  handleViewSubmit(event) {
+  async handleViewSubmit(event) {
     event.preventDefault();
+
+    this.view.awaitSave(true);
+
+    try {
+      const point = this.pointsModel.item();
+
+      point.basePrice = this.view.basePriceView.getValue();
+      point.startDate = this.view.datesView.getValues()[0];
+      point.endDate = this.view.datesView.getValues()[1];
+      point.destinationId = this.destinationsModel.findBy('name', this.view.destinationView.getValue()).id;
+      point.offerIds = this.view.offersView.getValues();
+      point.type = this.view.pointTypeView.getValue();
+
+      await this.pointsModel.add(point);
+
+      this.navigate('/');
+    }
+    catch (exception) {
+      console.log(exception);
+      this.view.shake();
+    }
+
+    this.view.awaitSave(false);
   }
 
   handleViewReset() {
