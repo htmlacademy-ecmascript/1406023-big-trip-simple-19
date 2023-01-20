@@ -106,6 +106,13 @@ export default class CollectionModel extends Model {
   }
 
   /**
+ * @param {string} id
+ */
+  findIndexById(id) {
+    return this.listAll().findIndex((element) => element.id === id);
+  }
+
+  /**
  * @param {ItemAdapter} item
  */
   async add(item) {
@@ -122,7 +129,7 @@ export default class CollectionModel extends Model {
    * @param {ItemAdapter} item
    */
   async update(item) {
-    const newItem = await this.#store.add(item.toJSON());
+    const newItem = await this.#store.update(item.toJSON());
     const index = Number(this.findById(item.id));
     const detail = { newItem: this.#adapt(newItem), oldItem: this.item(index) };
 
@@ -135,7 +142,15 @@ export default class CollectionModel extends Model {
   /**
    * @param {string} id
    */
-  // async delete(id) {
-  //   //TODO: Написать реализацию
-  // }
+  async delete(id) {
+    await this.#store.delete(id);
+
+    const index = this.findIndexById(id);
+    const detail = this.item(index);
+
+    this.#items.splice(index, 1);
+    this.dispatchEvent(new CustomEvent('delete', { detail }));
+
+    return detail;
+  }
 }
