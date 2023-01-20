@@ -129,7 +129,7 @@ export default class CollectionModel extends Model {
    * @param {ItemAdapter} item
    */
   async update(item) {
-    const newItem = await this.#store.add(item.toJSON());
+    const newItem = await this.#store.update(item.toJSON());
     const index = Number(this.findById(item.id));
     const detail = { newItem: this.#adapt(newItem), oldItem: this.item(index) };
 

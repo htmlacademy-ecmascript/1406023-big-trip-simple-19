@@ -4,7 +4,8 @@ import { PointType } from '../enums';
 import { formatNumber } from '../utils';
 
 /**
- * @extends {Presenter<NewPointEditorView>}
+ * @template {NewPointEditorView} View
+ * @extends {Presenter<View>}
  */
 export default class NewPointEditorPresenter extends Presenter {
   constructor() {
@@ -87,11 +88,18 @@ export default class NewPointEditorPresenter extends Presenter {
   }
 
   /**
+   * @param {PointAdapter} point
+   */
+  async save(point) {
+    await this.pointsModel.add(point);
+  }
+
+  /**
    * @override
    */
   handleNavigation() {
     if (this.location.pathname === '/new') {
-      const point = this.pointsModel.item(5);
+      const point = this.pointsModel.item();
 
       point.type = PointType.TRAIN;
       point.destinationId = this.destinationsModel.item(5).id;
@@ -118,27 +126,33 @@ export default class NewPointEditorPresenter extends Presenter {
 
     try {
       const point = this.pointsModel.item();
+      const destinationName = this.view.destinationView.getValue();
+      const destination = this.destinationsModel.findBy('name', destinationName);
+      const [startDate, endDate] = this.view.datesView.getValues();
 
       point.basePrice = this.view.basePriceView.getValue();
-      point.startDate = this.view.datesView.getValues()[0];
-      point.endDate = this.view.datesView.getValues()[1];
-      point.destinationId = this.destinationsModel.findBy('name', this.view.destinationView.getValue()).id;
+      point.startDate = startDate;
+      point.endDate = endDate;
+      point.destinationId = destination?.id;
       point.offerIds = this.view.offersView.getValues();
       point.type = this.view.pointTypeView.getValue();
 
-      await this.pointsModel.add(point);
+      await this.save(point);
 
-      this.navigate('/');
+      this.view.close();
     }
     catch (exception) {
-      console.log(exception);
       this.view.shake();
     }
 
     this.view.awaitSave(false);
   }
 
-  handleViewReset() {
+  /**
+   * @param {Event} event
+   */
+  handleViewReset(event) {
+    void event;
     this.view.close();
   }
 
