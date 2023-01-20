@@ -2,6 +2,7 @@ import FilterView from './views/filter-view/filter-view';
 import SortView from './views/sort-view/sort-view';
 import ListView from './views/list-view/list-view';
 import NewPointEditorView from './views/new-point-editor-view/new-point-editor-view';
+import PointEditorView from './views/point-editor-view/point-editor-view';
 import './views/point-view/point-view';
 import Store from './store';
 
@@ -17,12 +18,11 @@ import FilterPresenter from './presenters/filter-presenter';
 import SortPresenter from './presenters/sort-presenter';
 import NewPointButtonPresenter from './presenters/new-point-button-presenter';
 import NewPointEditorPresenter from './presenters/new-point-editor-presenter';
-import PointEditorView from './views/point-editor-view/point-editor-view';
 import PointEditorPresenter from './presenters/point-editor-presenter';
 
 
 const BASE = 'https://19.ecmascript.pages.academy/big-trip-simple';
-const AUTH = 'Basic frd2ss3w2e';
+const AUTH = 'Basic frd23ssfqw2de';
 
 /**
  * @type {Store<Point>}
