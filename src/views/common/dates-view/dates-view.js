@@ -5,8 +5,8 @@ import 'flatpickr/dist/flatpickr.css';
 
 export default class DatesView extends View {
   /**
- * @type {Calendar}
- */
+   * @type {Calendar}
+   */
   #startDateCalendar;
 
   /**

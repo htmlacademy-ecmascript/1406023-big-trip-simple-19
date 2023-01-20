@@ -25,9 +25,9 @@ export default class PointAdapter extends Adapter {
   }
 
   /**
-* @override
-* @return {Partial<Point>}
-*/
+   * @override
+   * @return {Partial<Point>}
+   */
   toJSON() {
     return {
       'base_price': this.basePrice,

@@ -6,10 +6,9 @@ export default class Store {
   #auth;
 
   /**
- *
- * @param {string} base
- * @param {string} auth
- */
+   * @param {string} base
+   * @param {string} auth
+   */
   constructor(base, auth) {
     this.#base = base;
     this.#auth = auth;
@@ -58,7 +57,6 @@ export default class Store {
   }
 
   /**
-   *
    * @param {string} path
    * @param {RequestInit} options
    */

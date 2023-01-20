@@ -43,7 +43,6 @@ export default class NewPointEditorPresenter extends Presenter {
   }
 
   /**
-   *
    * @param {PointAdapter} point
    */
   updateView(point) {

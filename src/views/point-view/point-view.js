@@ -4,8 +4,8 @@ import './point-view.css';
 
 export default class PointView extends View {
   /**
- * @param {PointViewState} state
- */
+   * @param {PointViewState} state
+   */
   constructor(state) {
     super(state);
 
@@ -47,8 +47,8 @@ export default class PointView extends View {
   }
 
   /**
-* @param {OfferViewState} state
-*/
+   * @param {OfferViewState} state
+   */
   createOfferHtml(state) {
     return html`
       <li class="event__offer">

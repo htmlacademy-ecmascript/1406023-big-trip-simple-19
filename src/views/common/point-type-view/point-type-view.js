@@ -94,8 +94,8 @@ export default class PointTypeView extends RadioGroupView {
     (this.querySelector('.event__type-toggle')).checked = true;
 
     /**
-   * @type {HTMLInputElement}
-   */
+     * @type {HTMLInputElement}
+     */
     (this.querySelector('.event__type-input:checked')).focus();
   }
 
@@ -118,8 +118,8 @@ export default class PointTypeView extends RadioGroupView {
   }
 
   /**
- * @param {KeyboardEvent} event
- */
+   * @param {KeyboardEvent} event
+   */
   handleKeydown(event) {
     if (event.key === 'Escape' && this.querySelector('.event__type-toggle:checked')) {
       event.stopPropagation();

@@ -39,8 +39,8 @@ export default class CollectionModel extends Model {
   }
 
   /**
-* @param {FilterCallback<ItemAdapter>} filter
-*/
+   * @param {FilterCallback<ItemAdapter>} filter
+   */
   setFilter(filter, notify = true) {
     this.#filter = filter;
     if (notify) {
@@ -91,9 +91,9 @@ export default class CollectionModel extends Model {
   }
 
   /**
- * @param {string} key
- * @param {*} value
- */
+   * @param {string} key
+   * @param {*} value
+   */
   findBy(key, value) {
     return this.listAll().find((item) => item[key] === value);
   }
@@ -106,15 +106,15 @@ export default class CollectionModel extends Model {
   }
 
   /**
- * @param {string} id
- */
+   * @param {string} id
+   */
   findIndexById(id) {
     return this.listAll().findIndex((element) => element.id === id);
   }
 
   /**
- * @param {ItemAdapter} item
- */
+   * @param {ItemAdapter} item
+   */
   async add(item) {
     const newItem = await this.#store.add(item.toJSON());
     const detail = this.#adapt(newItem);

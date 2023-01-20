@@ -20,7 +20,6 @@ export default class OffersView extends View {
   }
 
   /**
-   *
    * @param {OfferToggleViewState} state
    */
   createOptionHtml(state) {

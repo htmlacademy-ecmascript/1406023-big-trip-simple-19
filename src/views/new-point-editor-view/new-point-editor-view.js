@@ -97,7 +97,6 @@ export default class NewPointEditorView extends View {
   }
 
   /**
-   *
    * @param {boolean} flag
    */
   awaitSave(flag) {
