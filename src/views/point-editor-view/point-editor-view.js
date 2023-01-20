@@ -53,6 +53,9 @@ export default class PointEditorView extends NewPointEditorView {
     const text = deleteButtonTextMap[Number(flag)];
 
     this.querySelector('.event__reset-btn').textContent = text;
+    this.uiBlockerView.toggle(flag);
+
+    return text;
   }
 
   handleViewClick(event) {
