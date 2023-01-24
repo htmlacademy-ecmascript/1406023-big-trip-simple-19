@@ -24,8 +24,7 @@ export default class PointEditorView extends NewPointEditorView {
     this.pointView = this.listView.findById(this.dataset.id);
     this.pointView.replaceWith(this);
 
-    this.querySelector('.event__rollup-btn')
-      .addEventListener('click', this.handleViewClick.bind(this));
+    this.addEventListener('click', this.handleViewClick);
   }
 
   /**
@@ -58,9 +57,14 @@ export default class PointEditorView extends NewPointEditorView {
     return text;
   }
 
+  /**
+   * @param {MouseEvent & {target: Element}} event
+   */
   handleViewClick(event) {
     event.preventDefault();
-    this.close();
+    if (event.target.closest('.event__rollup-btn')) {
+      this.close();
+    }
   }
 }
 
