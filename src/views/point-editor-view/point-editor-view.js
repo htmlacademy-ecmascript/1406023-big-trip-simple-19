@@ -61,7 +61,6 @@ export default class PointEditorView extends NewPointEditorView {
    * @param {MouseEvent & {target: Element}} event
    */
   handleViewClick(event) {
-    event.preventDefault();
     if (event.target.closest('.event__rollup-btn')) {
       this.close();
     }
