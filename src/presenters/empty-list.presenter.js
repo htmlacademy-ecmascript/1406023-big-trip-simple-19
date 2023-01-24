@@ -9,8 +9,6 @@ export default class EmptyListPresenter extends Presenter {
   constructor() {
     super(...arguments);
 
-    this.updateView();
-
     this.pointsModel.addEventListener('add', this.handlePointModelAdd.bind(this));
     this.pointsModel.addEventListener('update', this.handlePointModelUpdate.bind(this));
     this.pointsModel.addEventListener('delete', this.handlePointModelDelete.bind(this));
@@ -30,7 +28,7 @@ export default class EmptyListPresenter extends Presenter {
    * @override
    */
   handleNavigation() {
-
+    this.updateView();
   }
 
   handlePointModelAdd() {
