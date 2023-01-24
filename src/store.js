@@ -81,7 +81,11 @@ export default class Store {
    */
   static async assert(response) {
     if(!response.ok) {
-      throw new Error(`Возникла ошибка ${response.statusText} со статусом ${response.status}`);
+      const message = `Возникла ошибка ${response.statusText} со статусом ${response.status}`;
+
+      throw new Error(message, {
+        cause: await response.json()
+      });
     }
   }
 

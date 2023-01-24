@@ -14,6 +14,7 @@ import offerGroupAdapter from './adapters/offer-group-adapter';
 import { FilterType, SortType } from './enums';
 import { filterCallbackMap, sortCallbackMap } from './maps';
 import ListPresenter from './presenters/list-presenter';
+import EmptyListPresenter from './presenters/empty-list.presenter';
 import FilterPresenter from './presenters/filter-presenter';
 import SortPresenter from './presenters/sort-presenter';
 import NewPointButtonPresenter from './presenters/new-point-button-presenter';
@@ -55,6 +56,7 @@ const offerGroupsModel = new CollectionModel({
 const models = [pointsModel, destinationsModel, offerGroupsModel];
 const filterView = document.querySelector(String(FilterView));
 const listView = document.querySelector(String(ListView));
+const emptyListView = document.querySelector('.trip-events__msg');
 const sortView = document.querySelector(String(SortView));
 const newPointButtonView = document.querySelector('.trip-main__event-add-btn');
 const newPointEditorView = new NewPointEditorView(listView);
@@ -69,6 +71,7 @@ Promise.all(
     new FilterPresenter(filterView, models);
     new SortPresenter(sortView, models);
     new ListPresenter(listView, models);
+    new EmptyListPresenter(emptyListView, models);
     new NewPointButtonPresenter(newPointButtonView, models);
     new NewPointEditorPresenter(newPointEditorView, models);
     new PointEditorPresenter(pointEditorView, models);

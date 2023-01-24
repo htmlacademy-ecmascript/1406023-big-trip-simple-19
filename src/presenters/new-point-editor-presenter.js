@@ -141,6 +141,12 @@ export default class NewPointEditorPresenter extends Presenter {
       this.view.close();
     }
     catch (exception) {
+      if (exception.cause?.error) {
+        const [{fieldName}] = exception.cause.error;
+
+        this.view.findByName(fieldName)?.focus();
+      }
+
       this.view.shake();
     }
 
