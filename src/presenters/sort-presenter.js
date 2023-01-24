@@ -1,7 +1,7 @@
 import Presenter from './presenter';
-import { sortDisabilityMap, sortTitleMap, sortCallbackMap } from '../maps';
-import { SortType } from '../enums';
-import { findKey } from '../utils';
+import {sortDisabilityMap, sortTitleMap, sortCallbackMap} from '../maps';
+import {SortType} from '../enums';
+import {findKey} from '../utils';
 
 /**
  * @extends {Presenter<SortView>}

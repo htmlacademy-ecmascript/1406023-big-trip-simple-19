@@ -1,5 +1,5 @@
 import View from '../../view';
-import { html } from '../../../utils';
+import {html} from '../../../utils';
 import './offers-view.css';
 
 export default class OffersView extends View {

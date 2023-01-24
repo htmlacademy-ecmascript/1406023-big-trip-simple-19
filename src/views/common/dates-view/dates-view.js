@@ -1,5 +1,5 @@
 import View from '../../view';
-import { html } from '../../../utils';
+import {html} from '../../../utils';
 import createCalendar from 'flatpickr';
 import 'flatpickr/dist/flatpickr.css';
 

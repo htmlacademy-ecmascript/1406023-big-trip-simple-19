@@ -1,7 +1,7 @@
-import { pointTitleMap } from '../maps';
+import {pointTitleMap} from '../maps';
 import Presenter from './presenter';
-import { PointType } from '../enums';
-import { formatNumber } from '../utils';
+import {PointType} from '../enums';
+import {formatNumber} from '../utils';
 
 /**
  * @template {NewPointEditorView} View

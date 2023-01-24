@@ -1,7 +1,7 @@
 import Presenter from './presenter';
-import { filterTitleMap, filterCallbackMap } from '../maps';
-import { findKey } from '../utils';
-import { FilterType } from '../enums';
+import {filterTitleMap, filterCallbackMap} from '../maps';
+import {findKey} from '../utils';
+import {FilterType} from '../enums';
 
 /**
  * @extends {Presenter<FilterView>}

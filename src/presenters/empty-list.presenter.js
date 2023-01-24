@@ -1,5 +1,5 @@
-import { emptyListTextMap, filterCallbackMap } from '../maps';
-import { findKey } from '../utils';
+import {emptyListTextMap, filterCallbackMap} from '../maps';
+import {findKey} from '../utils';
 import Presenter from './presenter';
 
 /**

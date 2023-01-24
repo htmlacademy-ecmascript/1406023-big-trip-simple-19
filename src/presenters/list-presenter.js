@@ -1,7 +1,7 @@
-import { PointIconMap } from '../enums';
-import { formatDate, formatNumber, formatTime } from '../utils';
+import {PointIconMap} from '../enums';
+import {formatDate, formatNumber, formatTime} from '../utils';
 import Presenter from './presenter';
-import { pointTitleMap } from '../maps';
+import {pointTitleMap} from '../maps';
 
 /**
  * @extends {Presenter<ListView>}

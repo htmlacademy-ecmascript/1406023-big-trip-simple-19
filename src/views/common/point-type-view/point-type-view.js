@@ -1,4 +1,4 @@
-import { PointIconMap } from '../../../enums';
+import {PointIconMap} from '../../../enums';
 import {html} from '../../../utils';
 import RadioGroupView from '../../radio-group-view/radio-group-view';
 import './point-type-view.css';

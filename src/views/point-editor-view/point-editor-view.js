@@ -1,7 +1,7 @@
 
 import NewPointEditorView from '../new-point-editor-view/new-point-editor-view';
-import { html } from '../../utils';
-import { deleteButtonTextMap } from '../../maps';
+import {html} from '../../utils';
+import {deleteButtonTextMap} from '../../maps';
 
 
 export default class PointEditorView extends NewPointEditorView {
