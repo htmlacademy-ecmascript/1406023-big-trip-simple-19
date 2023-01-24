@@ -5,6 +5,11 @@ export const filterTitleMap = {
   [FilterType.FUTURE]: 'Future'
 };
 
+export const emptyListTextMap = {
+  [FilterType.EVERYTHING]: 'Click New Event to create your first point',
+  [FilterType.FUTURE]: 'There are no future events now'
+};
+
 /**
  * @type {Record<string,FilterCallback<PointAdapter>>}
  */

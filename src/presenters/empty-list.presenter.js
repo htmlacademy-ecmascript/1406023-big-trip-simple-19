@@ -1,3 +1,5 @@
+import { emptyListTextMap, filterCallbackMap } from '../maps';
+import { findKey } from '../utils';
 import Presenter from './presenter';
 
 /**
@@ -7,6 +9,8 @@ export default class EmptyListPresenter extends Presenter {
   constructor() {
     super(...arguments);
 
+    this.updateView();
+
     this.pointsModel.addEventListener('add', this.handlePointModelAdd.bind(this));
     this.pointsModel.addEventListener('update', this.handlePointModelUpdate.bind(this));
     this.pointsModel.addEventListener('delete', this.handlePointModelDelete.bind(this));
@@ -14,6 +18,18 @@ export default class EmptyListPresenter extends Presenter {
   }
 
   updateView() {
+    const points = this.pointsModel.list();
+    const filter = this.pointsModel.getFilter();
+    const filterType = findKey(filterCallbackMap, filter);
+
+    this.view.hidden = this.location.pathname === '/new' || Boolean(points.length);
+    this.view.textContent = emptyListTextMap[filterType];
+  }
+
+  /**
+   * @override
+   */
+  handleNavigation() {
 
   }
 
