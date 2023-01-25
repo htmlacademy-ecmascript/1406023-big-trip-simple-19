@@ -44,6 +44,7 @@ const destinationsModel = new CollectionModel({
   store: destinationsStore,
   adapt: (item) => new DestanationAdapter(item)
 });
+
 /**
  * @type {Store<OfferGroup>}
  */
