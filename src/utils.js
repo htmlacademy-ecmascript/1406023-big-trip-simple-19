@@ -12,14 +12,12 @@ export const html = (strings, ...values) => strings.reduce((before, after, index
 });
 
 /**
- *
  * @param {string} value
  * @returns
  */
 export const formatDate = (value) => dayjs(value).format('MMM DD');
 
 /**
- *
  * @param {string} value
  * @returns
  */

@@ -1,12 +1,12 @@
 import View from '../view';
-import { html } from '../../utils';
+import {html} from '../../utils';
 import PointTypeView from '../common/point-type-view/point-type-view';
 import DestinationView from '../common/destination-view/destination-view';
 import DatesView from '../common/dates-view/dates-view';
 import BasePriceView from '../common/base-price-view/base-price-view';
 import OffersView from '../common/offers-view/offers-view';
 import DestinationDetailsView from '../common/destination-details-view/destination-details-view';
-import { saveButtonTextMap } from '../../maps';
+import {saveButtonTextMap} from '../../maps';
 import UiBlockerView from '../ui-blocker-view/ui-blocker-view';
 
 /**
@@ -81,6 +81,7 @@ export default class NewPointEditorView extends View {
   open() {
     this.listView.prepend(this);
     this.datesView.createCalendars();
+    this.fadeInRight();
 
     document.addEventListener('keydown', this);
   }
@@ -97,7 +98,6 @@ export default class NewPointEditorView extends View {
   }
 
   /**
-   *
    * @param {boolean} flag
    */
   awaitSave(flag) {
@@ -107,6 +107,13 @@ export default class NewPointEditorView extends View {
     this.uiBlockerView.toggle(flag);
 
     return text;
+  }
+
+  /**
+   * @param {string} name
+   */
+  findByName(name) {
+    return this.querySelector('form').elements[name];
   }
 
   /**

@@ -1,12 +1,12 @@
 import View from '../../view';
-import { html } from '../../../utils';
+import {html} from '../../../utils';
 import createCalendar from 'flatpickr';
 import 'flatpickr/dist/flatpickr.css';
 
 export default class DatesView extends View {
   /**
- * @type {Calendar}
- */
+   * @type {Calendar}
+   */
   #startDateCalendar;
 
   /**
@@ -41,7 +41,7 @@ export default class DatesView extends View {
         class="event__input  event__input--time"
         id="event-start-time-1"
         type="text"
-        name="event-start-time"
+        name="date_from"
       >
       —
       <label class="visually-hidden" for="event-end-time-1">To</label>
@@ -49,7 +49,7 @@ export default class DatesView extends View {
         class="event__input  event__input--time"
         id="event-end-time-1"
         type="text"
-        name="event-end-time"
+        name="date_to"
       >
     `;
   }

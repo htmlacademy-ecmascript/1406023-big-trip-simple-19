@@ -1,7 +1,7 @@
-import { pointTitleMap } from '../maps';
+import {pointTitleMap} from '../maps';
 import Presenter from './presenter';
-import { PointType } from '../enums';
-import { formatNumber } from '../utils';
+import {PointType} from '../enums';
+import {formatNumber} from '../utils';
 
 /**
  * @template {NewPointEditorView} View
@@ -43,7 +43,6 @@ export default class NewPointEditorPresenter extends Presenter {
   }
 
   /**
-   *
    * @param {PointAdapter} point
    */
   updateView(point) {
@@ -105,8 +104,7 @@ export default class NewPointEditorPresenter extends Presenter {
       point.destinationId = this.destinationsModel.item(5).id;
       point.startDate = new Date().toJSON();
       point.endDate = point.startDate;
-      point.basePrice = 175;
-      point.offerIds = ['1', '2'];
+      point.offerIds = [];
 
       this.view.open();
       this.updateView(point);
@@ -142,6 +140,12 @@ export default class NewPointEditorPresenter extends Presenter {
       this.view.close();
     }
     catch (exception) {
+      if (exception.cause?.error) {
+        const [{fieldName}] = exception.cause.error;
+
+        this.view.findByName(fieldName)?.focus();
+      }
+
       this.view.shake();
     }
 

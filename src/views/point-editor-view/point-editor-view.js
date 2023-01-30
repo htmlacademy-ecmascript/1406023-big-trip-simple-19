@@ -1,7 +1,7 @@
 
 import NewPointEditorView from '../new-point-editor-view/new-point-editor-view';
-import { html } from '../../utils';
-import { deleteButtonTextMap } from '../../maps';
+import {html} from '../../utils';
+import {deleteButtonTextMap} from '../../maps';
 
 
 export default class PointEditorView extends NewPointEditorView {
@@ -24,8 +24,7 @@ export default class PointEditorView extends NewPointEditorView {
     this.pointView = this.listView.findById(this.dataset.id);
     this.pointView.replaceWith(this);
 
-    this.querySelector('.event__rollup-btn')
-      .addEventListener('click', this.handleViewClick.bind(this));
+    this.addEventListener('click', this.handleViewClick);
   }
 
   /**
@@ -33,6 +32,7 @@ export default class PointEditorView extends NewPointEditorView {
    */
   close() {
     this.replaceWith(this.pointView);
+    this.pointView?.fadeInLeft();
     this.pointView = null;
 
     super.close(...arguments);
@@ -58,9 +58,13 @@ export default class PointEditorView extends NewPointEditorView {
     return text;
   }
 
+  /**
+   * @param {MouseEvent & {target: Element}} event
+   */
   handleViewClick(event) {
-    event.preventDefault();
-    this.close();
+    if (event.target.closest('.event__rollup-btn')) {
+      this.close();
+    }
   }
 }
 

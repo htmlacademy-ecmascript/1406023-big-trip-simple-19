@@ -1,5 +1,5 @@
 import View from '../../view';
-import { html } from '../../../utils';
+import {html} from '../../../utils';
 
 export default class DestinationView extends View {
   constructor() {
@@ -21,7 +21,7 @@ export default class DestinationView extends View {
         class="event__input  event__input--destination"
         id="event-destination-1"
         type="text"
-        name="event-destination"
+        name="destination"
         list="destination-list-1"
       >
       <datalist id="destination-list-1"></datalist>

@@ -7,7 +7,7 @@ export default class PointAdapter extends Adapter {
   constructor(data = {}) {
     super();
 
-    this.basePrice = data.base_price;
+    this.basePrice = data?.base_price;
     this.startDate = data.date_from;
     this.endDate = data.date_to;
     this.destinationId = String(data.destination);
@@ -25,9 +25,9 @@ export default class PointAdapter extends Adapter {
   }
 
   /**
-* @override
-* @return {Partial<Point>}
-*/
+   * @override
+   * @return {Partial<Point>}
+   */
   toJSON() {
     return {
       'base_price': this.basePrice,
