@@ -26,5 +26,14 @@ module.exports = {
           use: ['style-loader', 'css-loader']
         }
     ]
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          keep_classnames: /View$/
+        }
+      })
+    ]
   }
 };
