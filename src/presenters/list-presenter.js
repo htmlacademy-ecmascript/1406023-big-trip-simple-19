@@ -19,12 +19,25 @@ export default class ListPresenter extends Presenter {
     this.pointsModel.addEventListener('delete', this.handlePointsModelDelete.bind(this));
   }
 
-  updateView() {
-    this.view.setItems(
-      this.pointsModel
-        .list()
-        .map(this.createPointViewState, this)
-    );
+  /**
+   * @param {PointAdapter} [targetPoint]
+   */
+  updateView(targetPoint) {
+    const pointViews =
+      this.view.setItems(
+        this.pointsModel
+          .list()
+          .map(this.createPointViewState, this)
+      );
+
+    if (targetPoint) {
+      this.view.findById(targetPoint.id)?.fadeInLeft();
+    }
+    else {
+      pointViews.forEach((pointView, index) => {
+        pointView.fadeInLeft({delay: index * 100});
+      });
+    }
   }
 
   /**
@@ -65,16 +78,25 @@ export default class ListPresenter extends Presenter {
     this.updateView();
   }
 
-  handlePointsModelAdd() {
-    this.updateView();
+  /**
+   * @param {CustomEvent<PointAdapter>} event
+   */
+  handlePointsModelAdd(event) {
+    this.updateView(event.detail);
   }
 
-  handlePointsModelUpdate() {
-    this.updateView();
+  /**
+   * @param {CustomEvent<{newItem: PointAdapter}>} event
+   */
+  handlePointsModelUpdate(event) {
+    this.updateView(event.detail.newItem);
   }
 
-  handlePointsModelDelete() {
-    this.updateView();
+  /**
+   * @param {CustomEvent<PointAdapter>} event
+   */
+  handlePointsModelDelete(event) {
+    this.updateView(event.detail);
   }
 
   /**

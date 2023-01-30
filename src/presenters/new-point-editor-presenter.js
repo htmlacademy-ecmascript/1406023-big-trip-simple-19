@@ -104,8 +104,7 @@ export default class NewPointEditorPresenter extends Presenter {
       point.destinationId = this.destinationsModel.item(5).id;
       point.startDate = new Date().toJSON();
       point.endDate = point.startDate;
-      point.basePrice = 175;
-      point.offerIds = ['1', '2'];
+      point.offerIds = [];
 
       this.view.open();
       this.updateView(point);
