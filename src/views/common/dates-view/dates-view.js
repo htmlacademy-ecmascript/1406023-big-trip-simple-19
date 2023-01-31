@@ -86,7 +86,7 @@ export default class DatesView extends View {
     this.#endDateCalendar = createCalendar(endDateView, this.#endDateConfig);
   }
 
-  destroyCalebdars() {
+  destroyCalendars() {
     this.#startDateCalendar?.destroy();
     this.#endDateCalendar?.destroy();
   }

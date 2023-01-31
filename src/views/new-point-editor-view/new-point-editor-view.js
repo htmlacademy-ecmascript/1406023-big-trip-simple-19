@@ -88,7 +88,7 @@ export default class NewPointEditorView extends View {
 
   close(notify = true) {
     this.remove();
-    this.datesView.destroyCalebdars();
+    this.datesView.destroyCalendars();
 
     document.removeEventListener('keydown', this);
 
