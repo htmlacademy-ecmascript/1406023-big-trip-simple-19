@@ -30,7 +30,7 @@ export default class NewPointEditorPresenter extends Presenter {
     this.view.destinationView.addEventListener('input', this.handleDestinationViewInput.bind(this));
 
     this.view.datesView.setConfig({
-      dateFormat: 'Y/m/d H:i',
+      dateFormat: 'd/m/y H:i',
       'time_24hr': true,
       locale: {
         firstDayOfWeek: 1
