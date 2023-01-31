@@ -1,6 +1,6 @@
 import Adapter from './adapter';
 
-export default class DestanationAdapter extends Adapter {
+export default class DestinationAdapter extends Adapter {
   /**
    * @param {Destination} data
    */

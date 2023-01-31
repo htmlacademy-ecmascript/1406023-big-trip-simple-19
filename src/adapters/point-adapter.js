@@ -20,7 +20,7 @@ export default class PointAdapter extends Adapter {
     return Date.parse(this.endDate);
   }
 
-  get startdDateAsNumber() {
+  get startDateAsNumber() {
     return Date.parse(this.startDate);
   }
 

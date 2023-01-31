@@ -7,7 +7,7 @@ import Store from './store';
 
 import CollectionModel from './models/collection-model';
 import PointAdapter from './adapters/point-adapter';
-import DestanationAdapter from './adapters/destination-adapter';
+import DestinationAdapter from './adapters/destination-adapter';
 import OfferGroupAdapter from './adapters/offer-group-adapter';
 
 import {FilterType, SortType} from './enums';
@@ -41,7 +41,7 @@ const pointsModel = new CollectionModel({
 const destinationsStore = new Store(`${BASE}/destinations`, AUTH);
 const destinationsModel = new CollectionModel({
   store: destinationsStore,
-  adapt: (item) => new DestanationAdapter(item)
+  adapt: (item) => new DestinationAdapter(item)
 });
 
 /**
@@ -65,7 +65,7 @@ const pointEditorView = new PointEditorView(listView);
 Promise.all(
   models.map((model) => model.ready())
 )
-  .then(async () => {
+  .then(() => {
     new FilterPresenter(filterView, models);
     new SortPresenter(sortView, models);
     new ListPresenter(listView, models);
