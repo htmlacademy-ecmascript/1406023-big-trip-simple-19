@@ -1,4 +1,4 @@
-import {PointIconMap} from '../enums';
+import {pointIconMap} from '../maps';
 import {formatDate, formatNumber, formatTime} from '../utils';
 import Presenter from './presenter';
 import {pointTitleMap} from '../maps';
@@ -59,7 +59,7 @@ export default class ListPresenter extends Presenter {
     return {
       id: point.id,
       date: formatDate(point.startDate),
-      icon: PointIconMap[point.type],
+      icon: pointIconMap[point.type],
       title: `${pointTitleMap[point.type]} ${destination.name}`,
       startTime: formatTime(point.startDate),
       startDate: formatDate(point.endDate),

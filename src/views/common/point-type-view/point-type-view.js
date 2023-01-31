@@ -1,4 +1,4 @@
-import {PointIconMap} from '../../../enums';
+import {pointIconMap} from '../../../maps';
 import {html} from '../../../utils';
 import RadioGroupView from '../../radio-group-view/radio-group-view';
 import './point-type-view.css';
@@ -20,11 +20,11 @@ export default class PointTypeView extends RadioGroupView {
    */
   setValue(value) {
     super.setValue(value);
-    if (PointIconMap[value]) {
+    if (pointIconMap[value]) {
       /**
        * @type {HTMLImageElement}
        */
-      (this.querySelector('.event__type-icon')).src = PointIconMap[value];
+      (this.querySelector('.event__type-icon')).src = pointIconMap[value];
     }
   }
 

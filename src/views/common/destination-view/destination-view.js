@@ -42,7 +42,7 @@ export default class DestinationView extends View {
    */
   setOptions(states) {
     const optionsHtml = states.map(this.createOptionHtml).join('');
-    this.querySelector('#destination-list-1').insertAdjacentHTML('beforeend', optionsHtml);
+    this.querySelector('datalist').insertAdjacentHTML('beforeend', optionsHtml);
   }
 
   /**

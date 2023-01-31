@@ -28,7 +28,7 @@ export default class DatesView extends View {
     super();
 
     this.classList.add('event__field-group', 'event__field-group--time');
-    this.addEventListener('keydown', this.handleKeydown.bind(this), true);
+    this.addEventListener('keydown', this.handleKeydown, true);
   }
 
   /**
@@ -36,14 +36,14 @@ export default class DatesView extends View {
    */
   createHtml() {
     return html`
-			<label class="visually-hidden" for="event-start-time-1">From</label>
-			<input
+      <label class="visually-hidden" for="event-start-time-1">From</label>
+      <input
         class="event__input  event__input--time"
         id="event-start-time-1"
         type="text"
         name="date_from"
       >
-      —
+      &mdash;
       <label class="visually-hidden" for="event-end-time-1">To</label>
       <input
         class="event__input  event__input--time"
@@ -62,7 +62,6 @@ export default class DatesView extends View {
       enableTime: true,
       monthSelectorType: 'static',
       static: true
-      // disableMobile: true
     };
 
     //@ts-ignore
@@ -85,19 +84,6 @@ export default class DatesView extends View {
 
     this.#startDateCalendar = createCalendar(startDateView, this.#startDateConfig);
     this.#endDateCalendar = createCalendar(endDateView, this.#endDateConfig);
-
-    this.#startDateCalendar.calendarContainer
-      .addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          event.stopPropagation();
-        }
-      });
-    this.#endDateCalendar.calendarContainer
-      .addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          event.stopPropagation();
-        }
-      });
   }
 
   destroyCalebdars() {

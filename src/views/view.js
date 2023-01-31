@@ -12,8 +12,8 @@ export default class View extends HTMLElement {
   }
 
   /**
-     * @param {KeyframeAnimationOptions} [options]
-     */
+   * @param {KeyframeAnimationOptions} [options]
+   */
   shake(options) {
     const keyframes = {
       transform: [0, -5, 0, 5, 0].map((value) => `translateX(${value}px)`)

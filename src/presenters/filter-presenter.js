@@ -17,9 +17,9 @@ export default class FilterPresenter extends Presenter {
     this.updateViewDisability();
     this.view.addEventListener('change', this.handleViewChange.bind(this));
 
-    this.pointsModel.addEventListener('add', this.handlePointModelAdd.bind(this));
-    this.pointsModel.addEventListener('update', this.handlePointModelUpdate.bind(this));
-    this.pointsModel.addEventListener('delete', this.handlePointModelDelete.bind(this));
+    this.pointsModel.addEventListener('add', this.handlePointsModelAdd.bind(this));
+    this.pointsModel.addEventListener('update', this.handlePointsModelUpdate.bind(this));
+    this.pointsModel.addEventListener('delete', this.handlePointsModelDelete.bind(this));
   }
 
   updateViewValue() {
@@ -54,15 +54,15 @@ export default class FilterPresenter extends Presenter {
     this.pointsModel.setFilter(filterCallbackMap[filterType]);
   }
 
-  handlePointModelAdd() {
+  handlePointsModelAdd() {
     this.updateViewDisability();
   }
 
-  handlePointModelUpdate() {
+  handlePointsModelUpdate() {
     this.updateViewDisability();
   }
 
-  handlePointModelDelete() {
+  handlePointsModelDelete() {
     this.updateViewDisability();
   }
 }

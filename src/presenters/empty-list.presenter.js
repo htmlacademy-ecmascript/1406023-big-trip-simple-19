@@ -9,10 +9,10 @@ export default class EmptyListPresenter extends Presenter {
   constructor() {
     super(...arguments);
 
-    this.pointsModel.addEventListener('add', this.handlePointModelAdd.bind(this));
-    this.pointsModel.addEventListener('update', this.handlePointModelUpdate.bind(this));
-    this.pointsModel.addEventListener('delete', this.handlePointModelDelete.bind(this));
-    this.pointsModel.addEventListener('filter', this.handlePointModelFilter.bind(this));
+    this.pointsModel.addEventListener('add', this.handlePointsModelAdd.bind(this));
+    this.pointsModel.addEventListener('update', this.handlePointsModelUpdate.bind(this));
+    this.pointsModel.addEventListener('delete', this.handlePointsModelDelete.bind(this));
+    this.pointsModel.addEventListener('filter', this.handlePointsModelFilter.bind(this));
   }
 
   updateView() {
@@ -31,19 +31,19 @@ export default class EmptyListPresenter extends Presenter {
     this.updateView();
   }
 
-  handlePointModelAdd() {
+  handlePointsModelAdd() {
     this.updateView();
   }
 
-  handlePointModelUpdate() {
+  handlePointsModelUpdate() {
     this.updateView();
   }
 
-  handlePointModelDelete() {
+  handlePointsModelDelete() {
     this.updateView();
   }
 
-  handlePointModelFilter() {
+  handlePointsModelFilter() {
     this.updateView();
   }
 }

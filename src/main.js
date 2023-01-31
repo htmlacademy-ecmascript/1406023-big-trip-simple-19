@@ -3,13 +3,12 @@ import SortView from './views/sort-view/sort-view';
 import ListView from './views/list-view/list-view';
 import NewPointEditorView from './views/new-point-editor-view/new-point-editor-view';
 import PointEditorView from './views/point-editor-view/point-editor-view';
-import './views/point-view/point-view';
 import Store from './store';
 
 import CollectionModel from './models/collection-model';
 import PointAdapter from './adapters/point-adapter';
 import DestanationAdapter from './adapters/destination-adapter';
-import offerGroupAdapter from './adapters/offer-group-adapter';
+import OfferGroupAdapter from './adapters/offer-group-adapter';
 
 import {FilterType, SortType} from './enums';
 import {filterCallbackMap, sortCallbackMap} from './maps';
@@ -51,7 +50,7 @@ const destinationsModel = new CollectionModel({
 const offerGroupsStore = new Store(`${BASE}/offers`, AUTH);
 const offerGroupsModel = new CollectionModel({
   store: offerGroupsStore,
-  adapt: (item) => new offerGroupAdapter(item)
+  adapt: (item) => new OfferGroupAdapter(item)
 });
 
 const models = [pointsModel, destinationsModel, offerGroupsModel];

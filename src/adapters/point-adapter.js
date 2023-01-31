@@ -7,7 +7,7 @@ export default class PointAdapter extends Adapter {
   constructor(data = {}) {
     super();
 
-    this.basePrice = data?.base_price;
+    this.basePrice = data.base_price;
     this.startDate = data.date_from;
     this.endDate = data.date_to;
     this.destinationId = String(data.destination);
@@ -16,11 +16,11 @@ export default class PointAdapter extends Adapter {
     this.type = data.type;
   }
 
-  get endDateIsNumber() {
+  get endDateAsNumber() {
     return Date.parse(this.endDate);
   }
 
-  get startdDateIsNumber() {
+  get startdDateAsNumber() {
     return Date.parse(this.startDate);
   }
 
