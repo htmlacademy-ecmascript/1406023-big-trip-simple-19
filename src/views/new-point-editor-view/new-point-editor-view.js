@@ -16,7 +16,7 @@ export default class NewPointEditorView extends View {
   constructor(listView) {
     super();
 
-    this.classList.add('trip-events__item');
+    this.classList.add('trip-events__item', 'trip-events__item--edit');
 
     /**
      * @type {ListView}
@@ -88,7 +88,7 @@ export default class NewPointEditorView extends View {
 
   close(notify = true) {
     this.remove();
-    this.datesView.destroyCalebdars();
+    this.datesView.destroyCalendars();
 
     document.removeEventListener('keydown', this);
 

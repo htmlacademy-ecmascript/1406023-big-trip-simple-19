@@ -1,4 +1,4 @@
-import {FilterType, SortType, PointType, buttomState} from './enums';
+import {FilterType, SortType, PointType, ButtonState} from './enums';
 
 export const filterTitleMap = {
   [FilterType.EVERYTHING]: 'Everything',
@@ -15,7 +15,7 @@ export const emptyListTextMap = {
  */
 export const filterCallbackMap = {
   [FilterType.EVERYTHING]: () => true,
-  [FilterType.FUTURE]: (item) => Date.now() < item.endDateIsNumber
+  [FilterType.FUTURE]: (item) => Date.now() < item.endDateAsNumber
 };
 
 export const sortTitleMap = {
@@ -38,7 +38,7 @@ export const sortDisabilityMap = {
  * @type {Record<string,SortCallback<PointAdapter>>}
  */
 export const sortCallbackMap = {
-  [SortType.DAY]: (item, nextItem) => item.startdDateIsNumber - nextItem.startdDateIsNumber,
+  [SortType.DAY]: (item, nextItem) => item.startdDateAsNumber - nextItem.startdDateAsNumber,
   [SortType.EVENT]: () => 0,
   [SortType.TIME]: () => 0,
   [SortType.PRICE]: (item, nextItem) => nextItem.basePrice - item.basePrice,
@@ -58,11 +58,15 @@ export const pointTitleMap = {
 };
 
 export const saveButtonTextMap = {
-  [buttomState.DEFAULT]: 'Save',
-  [buttomState.PRESSED]: 'Saving...'
+  [ButtonState.DEFAULT]: 'Save',
+  [ButtonState.PRESSED]: 'Saving...'
 };
 
 export const deleteButtonTextMap = {
-  [buttomState.DEFAULT]: 'Delete',
-  [buttomState.PRESSED]: 'Deleting...'
+  [ButtonState.DEFAULT]: 'Delete',
+  [ButtonState.PRESSED]: 'Deleting...'
 };
+
+export const pointIconMap = Object.fromEntries(
+  Object.values(PointType).map((value) => [value, `img/icons/${value}.png`])
+);
