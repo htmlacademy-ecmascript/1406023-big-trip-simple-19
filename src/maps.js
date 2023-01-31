@@ -38,7 +38,7 @@ export const sortDisabilityMap = {
  * @type {Record<string,SortCallback<PointAdapter>>}
  */
 export const sortCallbackMap = {
-  [SortType.DAY]: (item, nextItem) => item.startdDateAsNumber - nextItem.startdDateAsNumber,
+  [SortType.DAY]: (item, nextItem) => item.startDateAsNumber - nextItem.startDateAsNumber,
   [SortType.EVENT]: () => 0,
   [SortType.TIME]: () => 0,
   [SortType.PRICE]: (item, nextItem) => nextItem.basePrice - item.basePrice,

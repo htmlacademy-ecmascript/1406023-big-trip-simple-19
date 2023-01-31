@@ -109,7 +109,7 @@ export default class CollectionModel extends Model {
    * @param {string} id
    */
   findIndexById(id) {
-    return this.listAll().findIndex((element) => element.id === id);
+    return this.listAll().findIndex((item) => item.id === id);
   }
 
   /**
